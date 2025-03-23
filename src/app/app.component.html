@@ -1,0 +1,10 @@
+<router-outlet />
+<div class="card flex justify-center">
+  <p-button label="Check" />
+</div>
+<h1 class="text-3xl font-bold underline">
+  Hello world!
+</h1>
+<div class="card flex justify-center">
+  <p-select [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" placeholder="Select a City" class="w-full md:w-56" />
+</div>
