@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy{
     
     ngOnInit(): void {
       this.getMediaQuery()
-      this.themeService.setTheme()
+      this.themeService.setFirstTheme()
       const response = this.document.defaultView?.window
       if(!response) return;
         this.subscribes.push(

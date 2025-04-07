@@ -50,11 +50,13 @@ export class NavbarMainComponent {
 
   ngOnInit(): void {
     const theme = this.themeService.getTheme()
+    console.log(`se inicia el tema ${this.theme}`)
     this.theme = theme === 'dark' ? 'moon' : 'sun'
   }
+  
 
   changeTheme() {
-    console.log("se cambia de tema")
+    console.log(`se cambia de tema ${this.theme}`)
     const theme = this.themeService.setTheme()
     this.theme = theme === 'dark'? 'moon' : 'sun'
   }
