@@ -1,0 +1,68 @@
+<div class="flex justify-center items-center h-48 w-full bg-cover bg-blend-overlay">
+    <div class="flex flex-col justify-center items-center h-full w-full gap-0">
+      <p-avatar icon="pi pi-user" styleClass="mr-2 bg-[--bg-menu] text-[--bg-option]" size="xlarge" shape="circle"></p-avatar>
+      <span class="font-bold text-[--bg-option] text-lg">{{ usuario }}</span>
+      <span class="font-bold text-[--bg-option] text-xs">{{ cargo }}</span>
+      <span class="font-bold text-[--bg-option] text-xs">{{ entidad }}</span>
+      <p-button class="mt-2" icon="pi pi-user-edit" type="button" label="Editar perfil" size="small" (onClick)="edithProfile()"></p-button>
+    </div>
+  </div>
+  <div class="px-4 py-2 text-[--bg-option] grid grid-cols-12 gap-2">
+    @for(menu of menus; track $index) {
+      @if(menu.tipo === 'GRUPO_MENU') {
+        <div class="col-span-12 p-fluid text-center">
+          <p-divider></p-divider>
+          <span class="font-bold text-sm px-3 py-2 w-full">{{ menu.label }}</span>
+          <p-divider></p-divider>
+        </div>
+        @for(child of menu.children; track $index) {
+          @if(child.tipo === 'MENU') {
+            <div class="col-span-12">
+              <p-button
+                (click)="toggleMenu(child)"
+                [text]="true"
+                styleClass="text-[--bg-option] font-bold w-full shadow-none hover:animate-[shadowDropTl_0.4s_cubic-bezier(0.250,0.460,0.450,0.940)_both] [&_.move]:hover:animate-[swing_ease-in-out_0.5s_3_alternate]"
+              >
+                <ng-template pTemplate="content">
+                  <div class="flex gap-x-2 items-center w-full">
+                    <div>
+                      <i class="{{ menu.icon }} move text-xl"></i>
+                    </div>
+                    <div class="w-full text-base text-left">
+                      <span>{{ menu.label }}</span>
+                    </div>
+                    <div class="flex justify-end">
+                      <i class="pi pi-angle-right text-2xl"></i>
+                    </div>
+                  </div>
+                </ng-template>
+              </p-button>
+            </div>
+          }
+        }
+      }
+      @if(menu.tipo === 'MENU') {
+        <div class="col-span-12 p-fluid">
+          <p-button
+            (click)="toggleMenu(menu)"
+            [text]="true"
+            styleClass="text-[--bg-option] font-bold shadow-none hover:animate-[shadowDropTl_0.4s_cubic-bezier(0.250,0.460,0.450,0.940)_both] [&_.move]:hover:animate-[swing_ease-in-out_0.5s_3_alternate]"
+          >
+            <ng-template pTemplate="content">
+              <div class="flex gap-x-2 items-center w-full">
+                <div>
+                  <i class="{{ menu.icon }} move text-xl"></i>
+                </div>
+                <div class="w-full text-base text-left">
+                  <span>{{ menu.label }}</span>
+                </div>
+                <div class="flex justify-end">
+                  <i class="pi pi-angle-right text-2xl"></i>
+                </div>
+              </div>
+            </ng-template>
+          </p-button>
+        </div>
+      }
+    }
+</div>

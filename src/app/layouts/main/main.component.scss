@@ -1,0 +1,10 @@
+:host ::ng-deep {
+    .p-card .p-card-body {
+      .p-card-content {
+        padding: 0;
+      }
+    }
+    .p-sidebar .p-sidebar-header .p-sidebar-icon {
+      color: var(--bg-option) !important;
+    }
+  }

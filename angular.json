@@ -32,7 +32,17 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "public/theme/light.scss",
+                "bundleName": "light",
+                "inject": false
+              },
+              {
+                "input": "public/theme/dark.scss",
+                "bundleName": "dark",
+                "inject": false
+              }
             ],
             "scripts": []
           },

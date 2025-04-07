@@ -1,0 +1,32 @@
+<div class="flex bg-[var(--bg-theme)]">
+    @if(openSide && ['lg', 'xl', '2xl'].includes(mediaQuery())) {
+        <div class="w-[25rem] h-screen rounded-none sticky top-0 left-0 bg-[--bg-menu] display-none shadow-2xl {{ side? 'animate-[slideIn_0.2s_ease-in-out_both]': 'animate-[slideOut_0.2s_ease-in-out_both]' }}">
+          <sidebar  [menus]="menus"/>
+        </div>
+    }
+    @if (['md'].includes(mediaQuery())) {
+      <p-sidebar [(visible)]="side" styleClass="w-[40%] bg-[--bg-menu]" (visibleChange)="toggleSidebar($event)">
+        <sidebar (selectMenu)="toggleSidebar(false)" [menus]="menus"/>
+      </p-sidebar>
+    }
+    @if (['xs', 'sm'].includes(mediaQuery())) {
+      <p-sidebar [(visible)]="side" [fullScreen]="true" styleClass="bg-[--bg-menu] fill-[--bg-option]" (visibleChange)="toggleSidebar($event)">
+        <sidebar (selectMenu)="toggleSidebar(false)" [menus]="menus"/>
+      </p-sidebar>
+    }
+    <div class="p-fluid w-full min-h-screen bg-[--bg-theme]">
+      <navbar-main (onMenu)="toggleSidebar($event)" [sidebarOpen]="side" [mediaQuery]="mediaQuery()" (onLogout)="logout()" (onLogo)="home()"/>
+      <!-- <navbar-main (onMenu)="toggleSidebar($event)" [sidebarOpen]="side" [mediaQuery]="mediaQuery()" (onLogout)="logout()" [notifiers]="notifiers" (onLogo)="home()" (onNotify)="listNotificacion()"/> -->
+      <div class="w-full p-3 bg-[#393E46]">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="flex items-center gap-x-2 text-2xl px-6 py-4 font-bold bg-[#222831] text-[#EEEEEE] rounded-t-md">
+              <i class="font-bold text-xl" [classList]="[selected.icon]"></i>
+              <span class="text-xl">{{ selected.label }}</span>
+            </div>
+          </ng-template>
+          <!-- <router-outlet/> -->
+        </p-card>
+      </div>
+    </div>
+</div>
