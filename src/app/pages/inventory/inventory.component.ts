@@ -1,8 +1,10 @@
-import { Component, computed, ViewChild } from '@angular/core';
+import { Component, computed, OnInit, ViewChild } from '@angular/core';
 import { CrudtableComponent } from '../../components/crudtable/crudtable.component';
 import { Filter } from '../../models/crud.model';
 import { CardModule } from 'primeng/card';
 import { GlobalService } from '../../common/global.service';
+import { Item, Page } from '../../services/types';
+import { InventoryService } from '../../services/inventory.service';
 
 @Component({
   selector: 'app-inventory',
@@ -14,27 +16,46 @@ import { GlobalService } from '../../common/global.service';
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.scss'
 })
-export class InventoryComponent {
+export class InventoryComponent implements OnInit {
 
   selected = computed(() => this.globalService.page() || { label: '404', icon: 'pi pi-spin pi-globe' })
   @ViewChild(CrudtableComponent) table!: CrudtableComponent;
   
   constructor(
-    private globalService:GlobalService
+    private globalService:GlobalService,
+    private inventoryService:InventoryService
   ){}
+
+  ngOnInit(): void {
+   this.getItems();
+  }
 
   total:any = 0
   items:any = []
   columns = [
-    { key: 'CODIGO', label: 'CODIGO'},
-    { key: 'DESCRIPCION', label: 'DESCRIPCIÓN'}
+    { key: 'id' , label: 'CODIGO'},
+    { key: 'name', label: 'NOMBRE'},
+    { key: 'quantity', label: 'CANTIDAD'},
+    { key: 'sellPrice', label: 'PRECIO'},
+    { key: 'fabricationCost', label: 'COSTO FABRICACIÓN'},
+    { key: 'color', label: 'COLOR'},
+    { key: 'category', label: 'CATEGORÍA'},
+    { key: 'imageUrl', label: 'IMAGEN'},
   ]
   
   filters: Array<Filter<string, string>> = [
-    { label: 'CODIGO', control: 'codigo', type: 'text', style: 'col-span-12 md:col-span-4' },
+    { label: 'NOMBRE', control: 'nombre', type: 'text', style: 'col-span-12 md:col-span-4' },
     { label: 'DESCRIPCIÓN', control: 'descripcion', type: 'text', style: 'col-span-12 md:col-span-4' },
   ]
 
+  async getItems() {
+    const res = await this.inventoryService.getItems();
+    console.log(res);
+    if (res.success) {
+      this.items = res.data.content;
+      this.total = res.data.totalElements;
+    }
+  }
 
   async change({}:any){}
 
