@@ -1,0 +1,73 @@
+<form [formGroup]="form" class="grid grid-cols-12 gap-2">
+    @for (filter of filters; track $index)  {
+      <div class="{{filter.style}} flex flex-col p-fluid gap-2">
+        @if (filter.type === 'text') {
+          <label [for]="filter.control" class="font-bold">{{ filter?.label }}</label>
+          <input
+            [id]="filter.control"
+            type="text"
+            (input)="eventFilter()"
+            pInputText
+            class="w-full"
+            [formControlName]="filter.control"
+            autocomplete="off"/>
+        }
+        @if (filter.type === 'select') {
+          <span class="font-bold">{{ filter?.label }}</span>
+          <p-dropdown
+            (onChange)="eventFilter()"
+            [options]="filter?.options"
+            [showClear]="true"
+            styleClass="w-full"
+            [filter]="true"
+            optionLabel="label"
+            optionValue="value"
+            filterBy="label"
+            appendTo="body"
+            [virtualScroll]="filter.virtualScroll || false"
+            [virtualScrollItemSize]="filter.virtualScrollSize || 5"
+            [formControlName]="filter.control"
+          >
+            <ng-template pTemplate="selectedItem" let-item>
+              <div class="flex gap-2 items-center max-w-[85vw]" >
+                <div class="flex flex-col">
+                  <span class="font-normal break-all">{{ item?.label }}</span>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template let-item pTemplate="item">
+              <div class="flex gap-2 items-center max-w-[85vw] break-all" >
+                <div class="flex flex-col w-full">
+                  <span class="w-full font-normal break-all">{{ item?.label }}</span>
+                </div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+        }
+        <!-- @if (filter.type === 'chip') {
+          <label [for]="filter.control" class="font-bold">{{ filter?.label }}</label>
+          <p-chips (ngModelChange)="eventFilter()" [inputId]="filter.control" [formControlName]="filter.control" separator=","></p-chips>
+        } -->
+        @if (filter.type === 'number') {
+          <label [for]="filter.control" class="font-bold">{{ filter?.label }}</label>
+          <p-inputNumber [inputId]="filter.control" (onInput)="eventFilter()" [useGrouping]="false" [formControlName]="filter.control"></p-inputNumber>
+        }
+        @if (filter.type === 'calendar') {
+          <label [for]="filter.control" class="font-bold">{{ filter?.label }}</label>
+          <p-calendar
+            [formControlName]="filter.control"
+            iconDisplay="input"
+            [showIcon]="true"
+            [view]="filter.calendar?.view || 'date'"
+            [dateFormat]="filter.calendar?.format || 'dd/mm/yy'"
+            [inputId]="filter.control"
+            placeholder="DD/MM/YYYY"
+            (ngModelChange)="eventFilter()"
+            [maxDate]="maxDateControl(filter.calendar?.maxDate)"
+            [minDate]="minDateControl(filter.calendar?.minDate)"
+            appendTo="body"
+          ></p-calendar>
+        }
+      </div>
+    }
+</form>

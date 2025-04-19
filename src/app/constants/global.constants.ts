@@ -5,3 +5,10 @@ export const MatchMediaQuery:any = {
     lg: `(min-width: 1024px) and (max-width: 1279px)`,
     xl: `(min-width: 1280px)`,
 }
+
+export const RowSelect = [
+    { label: 5, value: 5 },
+    { label: 10, value: 10 },
+    { label: 20, value: 20 },
+    { label: 50, value: 50 }
+  ];

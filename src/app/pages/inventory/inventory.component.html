@@ -1,0 +1,13 @@
+<p-card header="Inventario" subheader="Esto es un inventario" class="w-full">
+    <crudtable-component
+      [viewAdd]=true
+      [columns]="columns"
+      [filters]="filters"
+      [items]="items"
+      [total]="total"
+      (change)="change($event)"
+      (refresh)="refresh($event)"
+      [rowEvent]=true
+      (onRowDouble)="onRow($event)"
+    />
+</p-card>

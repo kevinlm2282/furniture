@@ -9,15 +9,9 @@ import { DOCUMENT } from '@angular/common';
 import { MediaQueryService } from './common/media-query.service';
 import { ThemeService } from './common/theme.service';
 
-
-interface City {
-  name: string;
-  code: string;
-}
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,ButtonModule,FormsModule],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

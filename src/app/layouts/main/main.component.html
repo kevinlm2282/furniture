@@ -21,11 +21,11 @@
         <p-card>
           <ng-template pTemplate="header">
             <div class="flex items-center gap-x-2 text-2xl px-6 py-4 font-bold bg-[#222831] text-[#EEEEEE] rounded-t-md">
-              <i class="font-bold text-xl" [classList]="[selected.icon]"></i>
-              <span class="text-xl">{{ selected.label }}</span>
+              <i class="font-bold text-xl" [classList]="[selected().icon]"></i>
+              <span class="text-xl">{{ selected().label }}</span>
             </div>
           </ng-template>
-          <!-- <router-outlet/> -->
+          <router-outlet/>
         </p-card>
       </div>
     </div>

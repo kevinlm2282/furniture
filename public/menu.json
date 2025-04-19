@@ -1,16 +1,69 @@
-[
-    {
-        "nombre": "INVENTARIO",
-        "icon": "pi-warehouse",
-        "childrens": [],
-        "tipo": "",
-        "ruta": ""
-    },
-    {
-        "nombre": "INVENTARIO",
-        "icon": "pi-warehouse",
-        "childrens": [],
-        "tipo": "",
-        "ruta": ""
-    }
-]
+{
+    "data": [
+        {
+            "nombre": "INVENTARIO",
+            "icon": "pi pi-warehouse",
+            "childrens": [
+                {
+                    "nombre": "Inventario",
+                    "icon": "pi pi-warehouse",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": "app/inventario"
+                },
+                {
+                    "nombre": "Entradas",
+                    "icon": "pi pi-directions-alt",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": ""
+                },
+                {
+                    "nombre": "Salidas",
+                    "icon": "pi pi-directions",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": ""
+                }
+            ],
+            "tipo": "GRUPO_MENU",
+            "ruta": ""
+        },
+        {
+            "nombre": "ADMINISTRACION",
+            "icon": "pi pi-warehouse",
+            "childrens": [
+                {
+                    "nombre": "Categoria",
+                    "icon": "pi pi-palette",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": ""
+                },
+                {
+                    "nombre": "Clientes",
+                    "icon": "pi pi-users",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": ""
+                },
+                {
+                    "nombre": "Color",
+                    "icon": "pi pi-palette",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": ""
+                },
+                {
+                    "nombre": "Usuarios",
+                    "icon": "pi pi-user",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": ""
+                }
+            ],
+            "tipo": "GRUPO_MENU",
+            "ruta": ""
+        }
+    ]
+}

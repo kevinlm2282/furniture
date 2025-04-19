@@ -1,0 +1,128 @@
+<div class="w-full">
+    <div class="flex justify-{{ ['xs', 'sm'].includes(informacion.mediaQuery()) ? 'center' : 'end'}} w-full gap-2 pb-2">
+      @if (buttons) {
+        <ng-container [ngTemplateOutlet]="buttons"></ng-container>
+      }
+      @if (
+        filters
+        && filters.length > 0
+      ) {
+        <div class="col-auto">
+          <p-button icon="pi pi-search" severity="info" (click)="informacion.open.filter= !informacion.open.filter"></p-button>
+        </div>
+      }
+      <p-button
+        icon="pi {{ informacion.loading ? 'pi-spin pi-spinner' : 'pi-history' }}"
+        (click)="eventRefresh()"
+        [disabled]="informacion.loading"
+      ></p-button>
+      @if (viewAdd) {
+        <p-button icon="pi pi-plus" (click)="addRegister()"></p-button>
+      }
+    </div>
+    @if(
+      filters
+      && filters.length > 0
+      && informacion.open.filter
+    ) {
+      <filter-component [filters]="filters" (filter)="eventFilter($event)" />
+    }
+    <div class="grid grid-cols-12 gap-2">
+      <div class="col-span-12">
+        <p-divider></p-divider>
+      </div>
+      @if (items.length === 0) {
+        <div class="col-span-12 text-center">
+          <span class="text-base font-bold">No se encontraron registros</span>
+        </div>
+        <div class="col-span-12">
+          <p-divider></p-divider>
+        </div>
+      } @else {
+        <div class="col-span-12 max-w-full">
+        @if (content) {
+          @for (product of items; track $index) {
+            <ng-container [ngTemplateOutlet]="content" [ngTemplateOutletContext]="context(product, { index: $index })"></ng-container>
+          }
+        } @else {
+          @if (!['xs', 'sm'].includes(informacion.mediaQuery())) {
+            <p-table [value]="items">
+              <ng-template pTemplate="header">
+                <tr class="max-w-full">
+                  @if (!readonly && action) {
+                    <th class="text-center">Acción</th>
+                  }
+                  @for (column of columns; track $index) {
+                    <th class="text-center">{{column.label}}</th>
+                  }
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-product let-index="rowIndex">
+                <tr
+                  class="max-w-full {{ styleClassRow }} {{ product.select ? styleClassSelectRow : '' }}"
+                  [ngClass]="{ 'row-accessories': product.select }"
+                  (click)="onRowEvent(product, index)">
+                  @if (!readonly && action) {
+                    <td>
+                      <div class="flex items-center justify-center gap-2 {{ styleClassActionTable }} flex-wrap">
+                        <ng-container [ngTemplateOutlet]="action" [ngTemplateOutletContext]="context(product, { index })"></ng-container>
+                      </div>
+                    </td>
+                  }
+                  @if (item) {
+                    @for (column of columns; track $index) {
+                      <td class="text-{{column.aling}}">
+                        <ng-container class="w-full" [ngTemplateOutlet]="item" [ngTemplateOutletContext]="context(product, { index, column })"></ng-container>
+                      </td>
+                    }
+                  } @else {
+                    @for (column of columns; track $index) {
+                      <td class="text-{{column.aling}}">{{ product[column.key] }}</td>
+                    }
+                  }
+                </tr>
+              </ng-template>
+            </p-table>
+          } @else {
+            <div class="flex flex-col gap-2 w-full justify-center">
+              @for (product of items; track product.id; let index = $index) {
+                <div
+                  class="flex flex-col w-full gap-2 {{ styleClassRow }} {{ product.select ? styleClassSelectRow : '' }}"
+                  (click)="onRowEvent(product, index)">
+                  @for (column of columns; track $index) {
+                    <div class="flex items-center w-full gap-2">
+                      @if (item) {
+                        <span class="font-bold">{{ column.label }}: </span>
+                        <div class="w-full flex text-right justify-end">
+                          <ng-container [ngTemplateOutlet]="item" [ngTemplateOutletContext]="context(product, { index, column })"></ng-container>
+                        </div>
+                      } @else {
+                        <span class="font-bold">{{ column.label }}: </span>
+                        <div class="w-full flex justify-end text-right">
+                          {{ product[column.key] }}
+                        </div>
+                      }
+                    </div>
+                  }
+                  @if (!readonly && action) {
+                    <div class="flex items-center w-full gap-2">
+                      <span class="font-bold">Acciones: </span>
+                      <div class="w-full flex flex-wrap justify-end gap-2">
+                        <ng-container [ngTemplateOutlet]="action" [ngTemplateOutletContext]="context(product, { index })" style="justify-content: end;"></ng-container>
+                      </div>
+                    </div>
+                  }
+                </div>
+                @if (index !== items.length - 1) {
+                  <p-divider></p-divider>
+                }
+              }
+            </div>
+          }
+        }
+        </div>
+      }
+    </div>
+    <pagination-component [mediaQuery]="informacion.mediaQuery()" [rows]="rows" [total]="total" (changePage)="page($event)" />
+</div>
+  
