@@ -16,12 +16,14 @@ import { GlobalService } from '../../common/global.service';
 })
 export class InventoryComponent {
 
-  selected = computed(() => this.globalService.page() || { label: '404', icon: 'pi pi-spin pi-globe' })
+  selected = computed(() => this.globalService.page() || { label: '404', icon: 'pi pi-spin pi-globe', description: 'd' })
   @ViewChild(CrudtableComponent) table!: CrudtableComponent;
   
   constructor(
     private globalService:GlobalService
-  ){}
+  ){
+    console.log(this.selected())
+  }
 
   total:any = 0
   items:any = []

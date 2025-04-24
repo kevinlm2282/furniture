@@ -7,4 +7,7 @@
     .p-sidebar .p-sidebar-header .p-sidebar-icon {
       color: var(--bg-option) !important;
     }
-  }
+}
+.card_transition {
+  view-transition-name: 'main'
+}
