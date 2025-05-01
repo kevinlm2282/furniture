@@ -1,12 +1,12 @@
 // @import "primeng/resources/themes/bootstrap4-light-blue/theme.css";
 
 :root {
+  --bg-title: #343a40;
   --info: #17a2b8;
   --success: #28a745;
   --bg-theme: #F9F9F9;
-  --bg-menu: #3E3E3E;
-  --bg-option: #F6E7C1;
-
+  --bg-menu: #222831;
+  --bg-option: #F2EDD7;
   --bg-primary: #007bff;
   --bg-secondary: #6c757d;
   --bg-success: #28a745;
@@ -15,7 +15,8 @@
   --bg-danger: #dc3545;
   --bg-light: #f8f9fa;
   --bg-dark: #343a40;
-  --text-primary: #fff;
+  --text-action: #ffffff;
+  --text-primary: #ffffff;
   --text-secondary: #6c757d;
   --text-success: #28a745;
   --text-info: #17a2b8;

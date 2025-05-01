@@ -1,4 +1,4 @@
-<p-card header="Inventario" subheader="Esto es un inventario" class="w-full">
+<p-card header="{{selected().label.toUpperCase()}}" subheader="" class="w-full">
     <crudtable-component
       [viewAdd]=true
       [columns]="columns"

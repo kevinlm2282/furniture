@@ -1,0 +1,21 @@
+{
+    "data": [
+        {
+            "nombre": "INVENTARIO",
+            "descripcion":"",
+            "icon": "pi pi-warehouse",
+            "childrens": [
+                {
+                    "nombre": "Inventario",
+                    "descripcion": "En la pagina se muestra el inventario disponible",
+                    "icon": "pi pi-warehouse",
+                    "childrens": [],
+                    "tipo": "MENU",
+                    "ruta": "app/inventario"
+                }
+            ],
+            "tipo": "GRUPO_MENU",
+            "ruta": ""
+        }
+    ]
+}

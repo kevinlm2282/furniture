@@ -1,0 +1,60 @@
+<!-- <span class="text-xl font-bold flex">Bienvenido {{nombre}}</span> -->
+<div class="m-4"></div>
+<!-- <span class="font-bold">Servicios disponibles:</span> -->
+<div class="grid grid-cols-12 gap-4">
+  <span class="col-span-12 text-center text-4xl font-bold">SISTEMA DE ADMINISTRACION DEL FINANCIAMIENTO DE PROYECTOS</span>
+  <span class="col-span-12 text-center text-4xl font-bold">(SAFIP)</span>
+  <span class="col-span-12 text-start font-bold text-2xl">Bienvenido {{nombre}}</span>
+</div>
+<div class="grid grid-cols-12 gap-4 pt-4">
+  @for (menu of menus; track $index) {
+    @if (mediaQuery() === 'xs') {
+      <div class="col-span-12 text-center">
+        <span class="font-bold text-lg">Módulo: {{ menu.nombre }}</span>
+      </div>
+      <div class="col-span-12 grid grid-cols-12 gap-4">
+        @for (child of menu.childrens; track $index) {
+          <div class="col-span-12">
+            <div class="border-[1px] border-solid border-[--surface-border] rounded m-2 text-center py-5 px-0 sm:px-3 cursor-pointer card-height" (click)="redirect(child)">
+              <div class="mb-3">
+                <i class="pi pi-tags text-2xl md:text-4xl"></i>
+              </div>
+              <div>
+                <span class="text-base md:text-lg mb-1 font-[500]">{{ upper(child.nombre) }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="col-span-12">
+        <p-carousel
+          [value]="menu.childrens"
+          [numVisible]="3"
+          [numScroll]="1"
+          [responsiveOptions]="responsive"
+          [verticalViewPortHeight]="'160px'"
+          [style]="{ display: 'grid' }"
+          styleClass="max-w-full"
+          [circular]="true"
+        >
+          <ng-template pTemplate="header">
+            <div class="mb-2">
+              <span class="font-bold text-lg">Módulo: {{ menu.nombre }}</span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="item" let-child>
+            <div class="border-[1px] border-solid border-[--surface-border] rounded m-2 text-center py-5 px-0 sm:px-3 cursor-pointer card-height" (click)="redirect(child)">
+              <div class="mb-3">
+                <i class="pi pi-tags text-2xl md:text-4xl"></i>
+              </div>
+              <div>
+                <span class="text-base md:text-lg mb-1 font-[500]">{{ upper(child.nombre) }}</span>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
+    }
+  }
+</div>

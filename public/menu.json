@@ -2,17 +2,20 @@
     "data": [
         {
             "nombre": "INVENTARIO",
+            "descripcion":"",
             "icon": "pi pi-warehouse",
             "childrens": [
                 {
                     "nombre": "Inventario",
+                    "descripcion": "En la pagina se muestra el inventario disponible",
                     "icon": "pi pi-warehouse",
                     "childrens": [],
                     "tipo": "MENU",
-                    "ruta": "app/inventario"
+                    "ruta": "/app/inventario"
                 },
                 {
                     "nombre": "Entradas",
+                    "descripcion": "En la pagina se muestra el historial de entradas",
                     "icon": "pi pi-directions-alt",
                     "childrens": [],
                     "tipo": "MENU",
@@ -20,6 +23,7 @@
                 },
                 {
                     "nombre": "Salidas",
+                    "descripcion": "En la pagina se muestra el historial de Salidas",
                     "icon": "pi pi-directions",
                     "childrens": [],
                     "tipo": "MENU",
@@ -31,10 +35,12 @@
         },
         {
             "nombre": "ADMINISTRACION",
+            "descripcion":"",
             "icon": "pi pi-warehouse",
             "childrens": [
                 {
                     "nombre": "Categoria",
+                    "descripcion": "En la pagina se muestra la lista de categorias",
                     "icon": "pi pi-palette",
                     "childrens": [],
                     "tipo": "MENU",
@@ -42,6 +48,7 @@
                 },
                 {
                     "nombre": "Clientes",
+                    "descripcion": "En la pagina se muestran los clientes",
                     "icon": "pi pi-users",
                     "childrens": [],
                     "tipo": "MENU",
@@ -49,6 +56,7 @@
                 },
                 {
                     "nombre": "Color",
+                    "descripcion": "En la pagina se muestra el listado de colores",
                     "icon": "pi pi-palette",
                     "childrens": [],
                     "tipo": "MENU",
@@ -56,6 +64,7 @@
                 },
                 {
                     "nombre": "Usuarios",
+                    "descripcion": "En la pagina se muestra el listado de usuarios",
                     "icon": "pi pi-user",
                     "childrens": [],
                     "tipo": "MENU",

@@ -18,13 +18,15 @@ import { InventoryService } from '../../services/inventory.service';
 })
 export class InventoryComponent implements OnInit {
 
-  selected = computed(() => this.globalService.page() || { label: '404', icon: 'pi pi-spin pi-globe' })
+  selected = computed(() => this.globalService.page() || { label: '404', icon: 'pi pi-spin pi-globe', description: 'd' })
   @ViewChild(CrudtableComponent) table!: CrudtableComponent;
   
   constructor(
     private globalService:GlobalService,
     private inventoryService:InventoryService
-  ){}
+  ){
+    console.log(this.selected())
+  }
 
   ngOnInit(): void {
    this.getItems();

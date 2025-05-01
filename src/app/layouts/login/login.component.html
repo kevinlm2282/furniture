@@ -1,0 +1,12 @@
+<div class="w-full fixed top-0 h-screen">
+    <picture class="flex justify-center items-center w-full h-screen">
+      <source srcset="img/background-{{ theme() }}.avif" type="image/avif">
+      <img src="img/background-{{ theme() }}.webp" class="h-screen w-screen" alt="Imagen de fondo" decoding="async" loading="lazy">
+    </picture>
+  </div>
+  <div class="p-fluid w-full min-h-screen">
+    <div class="absolute top-0 left-0 flex justify-center items-center w-full min-h-screen p-fluid z-20">
+      <router-outlet></router-outlet>
+    </div>
+    <navbar-login class="sticky top-0 z-30" (onLogo)="home()"/>
+</div>
