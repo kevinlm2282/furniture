@@ -22,10 +22,10 @@
           <p-divider></p-divider>
         </div> -->
         <div class="col-span-12">
-          <label for="usuario" class="font-bold">Usuario</label>
-          <input pInputText id="usuario" type="text" class="w-full" formControlName="usuario" (keyup.enter)="auth()"/>
-          @for (rule of rules.usuario; track $index) {
-            @if (form.controls["usuario"].invalid && (form.controls["usuario"].dirty || form.controls["usuario"].touched) && form.getError(rule.type, 'usuario')) {
+          <label for="username" class="font-bold">username</label>
+          <input pInputText id="username" type="text" class="w-full" formControlName="username" (keyup.enter)="auth()"/>
+          @for (rule of rules.username; track $index) {
+            @if (form.controls["username"].invalid && (form.controls["username"].dirty || form.controls["username"].touched) && form.getError(rule.type, 'usuario')) {
               <small class="p-error">{{ rule.message }}</small>
             }
           }
