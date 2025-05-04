@@ -42,7 +42,6 @@ export class InventoryComponent implements OnInit {
     { key: 'fabricationCost', label: 'COSTO FABRICACIÓN'},
     { key: 'color', label: 'COLOR'},
     { key: 'category', label: 'CATEGORÍA'},
-    { key: 'imageUrl', label: 'IMAGEN'},
   ]
   
   filters: Array<Filter<string, string>> = [
