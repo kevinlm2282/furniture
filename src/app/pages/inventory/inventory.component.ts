@@ -3,7 +3,6 @@ import { CrudtableComponent } from '../../components/crudtable/crudtable.compone
 import { Filter } from '../../models/crud.model';
 import { CardModule } from 'primeng/card';
 import { GlobalService } from '../../common/global.service';
-import { Item, Page } from '../../services/types';
 import { InventoryService } from '../../services/inventory.service';
 
 @Component({
